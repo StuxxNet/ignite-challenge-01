@@ -26,9 +26,7 @@ export const routes = [
             return res
                 .setHeader('Content-Type', 'application/json')
                 .writeHead(404)
-                .end(JSON.stringify({
-                    error: 'Task não encontrada ou banco de dados vazio'
-                }))
+                .end()
         }
     },
     {
@@ -54,6 +52,12 @@ export const routes = [
         path: '/tasks/:id',
         handler: (req, res) => {
             const id = req.params.id
+
+            const [task] = database.select('tasks', { id })
+            if (!task) {
+                return res.writeHead(404).end()
+            }
+
             database.update('tasks', id, req.body)
             return res
                 .writeHead(204)
@@ -65,6 +69,13 @@ export const routes = [
         path: '/tasks/:id/complete',
         handler: (req, res) => {
             const id = req.params.id
+
+            const [task] = database.select('tasks', { id })
+            console.log(task)
+            if (!task) {
+                return res.writeHead(404).end()
+            }
+
             database.patch('tasks', id)
             return res
                 .writeHead(204)
@@ -76,6 +87,12 @@ export const routes = [
         path: '/tasks/:id',
         handler: (req, res) => {
             const id = req.params.id
+
+            const [task] = database.select('tasks', { id })
+            if (!task) {
+                return res.writeHead(404).end()
+            }
+
             database.delete('tasks', id)
             return res
                 .writeHead(200)
