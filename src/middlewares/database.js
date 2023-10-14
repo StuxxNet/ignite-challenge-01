@@ -35,9 +35,6 @@ export class Database {
 
     insert(table, data) {
 
-        data.updated_at = null
-        data.completed_at = null
-
         if(Array.isArray(this.#database[table])) {
             this.#database[table].push(data)
         } else {

@@ -40,8 +40,8 @@ export const routes = [
             database.insert('tasks', {
                 id: id, 
                 created_at: new Date(),
-                updated_at: '',
-                completed_at: '',
+                updated_at: null,
+                completed_at: null,
                 ...req.body
             })
             return res
