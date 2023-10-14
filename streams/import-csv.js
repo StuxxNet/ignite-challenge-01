@@ -2,7 +2,7 @@ import fs, { read } from 'fs';
 import { parse } from 'csv-parse';
 
 export class ReadFromCSV {
-    #csvPath = new URL('../tasks.csv', import.meta.url)
+    #csvPath = new URL('./tasks.csv', import.meta.url)
 
     read() {
         const parser = parse({columns: true, delimiter: ','}, (error, data) => {
