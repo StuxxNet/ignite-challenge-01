@@ -33,16 +33,19 @@ export const routes = [
         method: 'POST',
         path: '/tasks',
         handler: (req, res) => {
+            const id = randomUUID()
+
             database.insert('tasks', {
-                id: randomUUID(), 
+                id: id, 
                 created_at: new Date(),
                 updated_at: null,
                 completed_at: null,
                 ...req.body
             })
             return res
+                .setHeader('Content-Type', 'application/json')
                 .writeHead(201)
-                .end()
+                .end(JSON.stringify({ id }))
         }
     },
     {

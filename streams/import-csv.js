@@ -21,6 +21,10 @@ export class ReadFromCSV {
                     },
                     body: JSON.stringify(task),
                     duplex: 'half'
+                }).then(response => {
+                    return response.text()
+                }).then(data => {
+                    console.log(data)
                 })
             }
         })
