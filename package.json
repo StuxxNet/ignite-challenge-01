@@ -1,0 +1,15 @@
+{
+  "name": "03-project",
+  "version": "1.0.0",
+  "description": "API develop to close the first development cicle",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch src/app.js"
+  },
+  "author": "Ramon Borges",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^6.3.5"
+  }
+}
