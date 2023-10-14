@@ -10,12 +10,15 @@ export class ReadFromCSV {
                 const { title, description } = value
 
                 const task = {
-                    title: title,
-                    description: description
+                    title,
+                    description
                 }
 
                 fetch('http://localhost:3000/tasks', {
                     method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                     body: JSON.stringify(task),
                     duplex: 'half'
                 })
